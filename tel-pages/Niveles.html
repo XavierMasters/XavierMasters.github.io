@@ -96,6 +96,7 @@
 						</div>
 						<div class="card-footer text-muted">
 							<button id="btnGauardar" class="btn btn-primary" onclick="DemoApp.sendMessage('');">« Guardar »</button>
+							<button id="main_btn" onclick="DemoApp.sendMessage('');">Send «Hello, World!»</button>
 						</div>
 					</div>
 				</div>
@@ -104,8 +105,6 @@
 	</form>
 	
 	<script type="application/javascript">
-
-		window.Telegram.WebApp.ready();
 		
 		function validateRange(me) {
 			//console.log(me.id + ' ' + me.value);
@@ -123,6 +122,80 @@
 					if(value < 0.25 || value > 1)
 						me.value = "";
 				break;
+			}
+		}
+		
+		const DemoApp = {
+			initData: Telegram.WebApp.initData || '',
+			initDataUnsafe: Telegram.WebApp.initDataUnsafe || {},
+			MainButton: Telegram.WebApp.MainButton,
+
+			init(options) {
+				document.body.style.visibility = '';
+				Telegram.WebApp.ready();
+				Telegram.WebApp.MainButton.setParams({
+					text: 'CLOSE WEBVIEW',
+					is_visible: true
+				}).onClick(DemoApp.close);
+			},
+			expand() {
+				Telegram.WebApp.expand();
+			},
+			close() {
+				Telegram.WebApp.close();
+			},
+			toggleMainButton(el) { // NO SE UTILIZA POR EL MOMENTO, ES PARA OCULTAR EL MAIN BUTTON TELGRAM
+				const mainButton = Telegram.WebApp.MainButton;
+				if (mainButton.isVisible) {
+					mainButton.hide();
+					el.innerHTML = 'Show Main Button';
+				} else {
+					mainButton.show();
+					el.innerHTML = 'Hide Main Button';
+				}
+			},
+			
+			// actions
+			sendMessage(msg_id, with_webview) {
+				if (!DemoApp.initDataUnsafe.query_id) {
+					alert('WebViewQueryId not defined');
+					return;
+				}
+
+				document.querySelectorAll('button').forEach((btn) => btn.disabled = true);
+
+				const btn = document.querySelector('#btn_status');
+				btn.textContent = 'Sending...';
+
+				DemoApp.apiRequest('sendMessage', {
+					msg_id: msg_id || '',
+					with_webview: !DemoApp.initDataUnsafe.receiver && with_webview ? 1 : 0
+				}, function(result) {
+					document.querySelectorAll('button').forEach((btn) => btn.disabled = false);
+
+					if (result.response) {
+						if (result.response.ok) {
+							btn.textContent = 'Message sent successfully!';
+							btn.className = 'ok';
+							btn.style.display = 'block';
+						} else {
+							btn.textContent = result.response.description;
+							btn.className = 'err';
+							btn.style.display = 'block';
+							alert(result.response.description);
+						}
+					} else if (result.error) {
+						btn.textContent = result.error;
+						btn.className = 'err';
+						btn.style.display = 'block';
+						alert(result.error);
+					} else {
+						btn.textContent = 'Unknown error';
+						btn.className = 'err';
+						btn.style.display = 'block';
+						alert('Unknown error');
+					}
+				});
 			}
 		}
 	</script>
