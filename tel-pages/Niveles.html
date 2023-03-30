@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="MobileOptimized" content="176" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <link rel="stylesheet" href="../Content/bootstrap-4.3.1.min.css" />
+    <link rel="stylesheet" href="../Content/font-awesome-4.7.0.min.css" />
+
+    <script src="../Content/js/jquery-3.4.1.min.js"></script>
+    <script src="../Content/js/bootstrap-4.3.1.min.js"></script>
+	<!-- Load the Telegram Library -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <section>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card card-shadow">
+                    <div class="card-header">
+					
+                    </div>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group  col-lg-12 col-md-12 col-sm-12">
+							<div class="user-info">
+								  <!-- Data -->
+								  <img id="profile" />
+								  <h1 id="name"></h1>
+								  <h3 id="username"></h3>
+								  <!--  -->
+								  <p id="test">
+									This page is a simple webapp integrated with telegram bot 💥
+								  </p>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="card-footer text-muted">
+						<button id="main_btn" onclick="DemoApp.sendMessage('');">Send «Hello, World!»</button>
+						<div class="text-right">
+							
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </section>
+	
+	<script type="application/javascript">
+
+		const profileEl = document.getElementById("profile");
+		  const nameEl = document.getElementById("name");
+		  const usernameEl = document.getElementById("username");
+		  const test = document.getElementById("test");
+		  window.Telegram.WebApp.ready();
+		  test.innerText = `${JSON.stringify(window.Telegram.WebApp)}`;
+
+		  const { first_name, last_name, username, photo_url } =
+			window.Telegram.WebApp.initDataUnsafe.user;
+
+		  // set the profile
+		  profileEl.src = photo_url;
+
+		  nameEl.innerText = ${first_name} ${last_name}`;
+
+		  usernameEl.innerText = username;
+	</script>
+    
+</body>
+</html>
