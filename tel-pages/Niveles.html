@@ -19,58 +19,112 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <section>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="card card-shadow">
-                    <div class="card-header">
-					
-                    </div>
-                    <div class="card-body">
-                        <div class="form-row">
-                            <div class="form-group  col-lg-12 col-md-12 col-sm-12">
-							<div class="user-info">
-								  <!-- Data -->
-								  <img id="profile" />
-								  <h1 id="name"></h1>
-								  <h3 id="username"></h3>
-								  <!--  -->
-								  <p id="test">
-									This page is a simple webapp integrated with telegram bot 💥
-								  </p>
+	<form>
+		<section>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="card card-shadow">
+						<div class="card-header">
+							<h4>Ingresa la información de los niveles:</h4>
+						</div>
+						<div class="card-body">
+							<div class="form-row">
+								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
+									<span>Aceite de motor</span>
+									<input type="number" id="txtAceitoMotor" name="txtAceitoMotor" min="0.5" max="4.0" step="0.5" class="form-control" onchange="validateRange(this)">
 								</div>
-                            </div>
-                        </div>
-                    </div>
-					<div class="card-footer text-muted">
-						<button id="main_btn" onclick="DemoApp.sendMessage('');">Send «Hello, World!»</button>
-						<div class="text-right">
-							
+							</div>
+							<div class="form-row">
+								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
+									<span>Anticongelante</span>
+									<input type="number" id="txtAnticongelante" name="txtAnticongelante" min="0.5" max="4" step="0.5" class="form-control" onchange="validateRange(this)">
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
+									<span>Aceite Hidráulico</span>
+									<input type="number" id="txtAceiteHidraulico" name="txtAceiteHidraulico" min="0.25" max="1" step="0.25" class="form-control" onchange="validateRange(this)">
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
+									<span>Aceite Transmisión Automática</span>
+									<input type="number" id="txtAceiteTransmisionAut" name="txtAceiteTransmisionAut" min="0.25" max="1" step="0.25" class="form-control" onchange="validateRange(this)">
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-lg-12 col-md-12 col-sm-12">
+									<div class="form-check form-check-inline">
+										<span class="form-check-label">Líquido de Frenos&nbsp;&nbsp;</span>
+										<input type="checkbox" id="chkLiqFrenos" name="chkLiqFrenos" class="form-check-input">
+									</div>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
+									<div class="form-check form-check-inline">
+										<span class="form-check-label">Agua Parabrisas&nbsp;&nbsp;</span>
+										<input type="checkbox" id="chkAguaP" name="chkAguaP" class="form-check-input">
+									</div>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
+									<div class="form-check form-check-inline">
+										<span class="form-check-label">Embrague&nbsp;&nbsp;</span>
+										<input type="checkbox" id="chkEmbrague" name="chkEmbrague" class="form-check-input">
+									</div>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
+									<div class="form-check form-check-inline">
+										<span class="form-check-label">Publicidad&nbsp;&nbsp;</span>
+										<input type="checkbox" id="chkPublicidadP" name="chkPublicidad" class="form-check-input">
+									</div>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
+									<div class="form-check form-check-inline">
+										<span class="form-check-label">Terminales&nbsp;&nbsp;</span>
+										<input type="checkbox" id="chkTerminales" name="chkTerminales" class="form-check-input">
+									</div>
+								</div>
+							</div>
+							   
+						</div>
+						<div class="card-footer text-muted">
+							<button id="btnGauardar" class="btn btn-primary" onclick="DemoApp.sendMessage('');">« Guardar »</button>
 						</div>
 					</div>
 				</div>
-            </div>
-        </div>
-    </section>
+			</div>
+		</section>
+	</form>
 	
 	<script type="application/javascript">
 
-		const profileEl = document.getElementById("profile");
-		  const nameEl = document.getElementById("name");
-		  const usernameEl = document.getElementById("username");
-		  const test = document.getElementById("test");
-		  window.Telegram.WebApp.ready();
-		  test.innerText = `${JSON.stringify(window.Telegram.WebApp)}`;
-
-		  const { first_name, last_name, username, photo_url } =
-			window.Telegram.WebApp.initDataUnsafe.user;
-
-		  // set the profile
-		  profileEl.src = photo_url;
-
-		  nameEl.innerText = ${first_name} ${last_name}`;
-
-		  usernameEl.innerText = username;
+		window.Telegram.WebApp.ready();
+		
+		function validateRange(me) {
+			//console.log(me.id + ' ' + me.value);
+			var value = 0;
+			switch (me.id) {
+				case "txtAceitoMotor":
+				case "txtAnticongelante":
+					value = me.value;
+					if(value < 0.5 || value > 4)
+						me.value = "";
+				break;
+				case "txtAceiteHidraulico":
+				case "txtAceiteTransmisionAut":
+					value = me.value;
+					if(value < 0.25 || value > 1)
+						me.value = "";
+				break;
+			}
+		}
 	</script>
     
 </body>
