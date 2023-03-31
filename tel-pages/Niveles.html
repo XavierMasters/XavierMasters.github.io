@@ -136,50 +136,17 @@
 					'{ "firstName":"Anna" , "lastName":"Smith" },' +
 					'{ "firstName":"Peter" , "lastName":"Jones" } ]}';
 		
-		//const mainButton = Telegram.WebApp.MainButton;
+		const mainButton = Telegram.WebApp.MainButton;
 		//const mainButton = window.Telegram.WebApp.MainButton;
-        //mainButton.text = "Save Preferences";
-        //mainButton.enable();
-        //mainButton.show();
+        mainButton.text = "Save Preferences";
+        mainButton.enable();
+        mainButton.show();
         // and make it send the "foods" object (as JSON string) back to the bot
-        //mainButton.onClick(function(){
-        //  window.Telegram.WebApp.sendData(JSON.stringify({dato1: 120}));
-        //});
+        mainButton.onClick(function(){
+          window.Telegram.WebApp.sendData(JSON.stringify(json));
+        });
 
-		const DemoApp = {
-			initData: Telegram.WebApp.initData || '',
-			initDataUnsafe: Telegram.WebApp.initDataUnsafe || {},
-			MainButton: Telegram.WebApp.MainButton,
-
-			init(options) {
-				document.body.style.visibility = '';
-				Telegram.WebApp.ready();
-				Telegram.WebApp.MainButton.setParams({
-					text: 'GUARDAR CAMBIOS',
-					is_visible: true
-				}).onClick(
-					Telegram.WebApp.sendData(JSON.stringify(json)));
-			},
-			expand() {
-				Telegram.WebApp.expand();
-			},
-			close() {
-				Telegram.WebApp.close();
-			},
-			toggleMainButton(el) { // NO SE UTILIZA POR EL MOMENTO, ES PARA OCULTAR EL MAIN BUTTON TELGRAM
-				const mainButton = Telegram.WebApp.MainButton;
-				if (mainButton.isVisible) {
-					mainButton.hide();
-					el.innerHTML = 'Show Main Button';
-				} else {
-					mainButton.show();
-					el.innerHTML = 'Hide Main Button';
-				}
-			}
-		}
 		
-		
-		DemoApp.init();
 	</script>
     
 </body>
