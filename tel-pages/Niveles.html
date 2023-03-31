@@ -153,7 +153,12 @@
 					text: 'GUARDAR CAMBIOS',
 					is_visible: true
 				}).onClick(
-					//Telegram.WebApp.sendData(JSON.stringify({dato1: 120}))
+					Telegram.WebApp.sendData(JSON.stringify(
+						{
+							"VEL_NAV_DN": 50000,
+							"VEL_NAV_UP": 20000
+						}
+					))
 					);
 			},
 			expand() {
