@@ -20,7 +20,7 @@
     <script src="../Content/js/bootstrap-4.3.1.min.js"></script>
 	
 </head>
-<body class="" style="visibility: hidden;">
+<body>
 	<form>
 		<section>
 			<div class="row">
@@ -150,9 +150,11 @@
 				document.body.style.visibility = '';
 				Telegram.WebApp.ready();
 				Telegram.WebApp.MainButton.setParams({
-					text: 'CLOSE WEBVIEW',
+					text: 'GUARDAR CAMBIOS',
 					is_visible: true
-				}).onClick(DemoApp.close);
+				}).onClick(
+					Telegram.WebApp.sendData(JSON.stringify({dato1: 120}))
+					);
 			},
 			expand() {
 				Telegram.WebApp.expand();
