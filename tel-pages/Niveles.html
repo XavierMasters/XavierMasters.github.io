@@ -158,7 +158,8 @@
 			return json;
 		}
 		
-		function sendDataToBot() { 
+		function sendDataToBot() {
+			var form = document.getElementById("myForm");
 			if(form.checkValidity() == false)
 				return;
 			Telegram.WebApp.sendData(JSON.stringify(getJsonData()));
