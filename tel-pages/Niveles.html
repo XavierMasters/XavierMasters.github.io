@@ -22,6 +22,12 @@
 	<form>
 		<section>
 			<div class="row">
+				<div id="btn_status" class="hint" style="display: none;" class="col-lg-12 col-md-12 col-sm-12">
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					Data passed to webview.
+					<span id="webview_data_status" class="status_need">Checking hash...</span>
+				</div>
 				<div class="col-lg-12 col-md-12 col-sm-12">
 					<div class="card card-shadow">
 						<div class="card-header">
@@ -96,7 +102,6 @@
 						</div>
 						<div class="card-footer text-muted">
 							<button id="btnGauardar" class="btn btn-primary" onclick="DemoApp.sendMessage('');">« Guardar »</button>
-							<button id="main_btn" onclick="DemoApp.sendMessage('');">Send «Hello, World!»</button>
 						</div>
 					</div>
 				</div>
@@ -196,8 +201,29 @@
 						alert('Unknown error');
 					}
 				});
+			},
+			checkInitData() {
+				const webViewStatus = document.querySelector('#webview_data_status');
+				if (DemoApp.initDataUnsafe.query_id &&
+					DemoApp.initData &&
+					webViewStatus.classList.contains('status_need')
+				) {
+					webViewStatus.classList.remove('status_need');
+					DemoApp.apiRequest('checkInitData', {}, function(result) {
+						if (result.ok) {
+							webViewStatus.textContent = 'Hash is correct (async)';
+							webViewStatus.className = 'ok';
+						} else {
+							webViewStatus.textContent = result.error + ' (async)';
+							webViewStatus.className = 'err';
+						}
+					});
+				}
 			}
 		}
+		
+		DemoApp.checkInitData();
+		DemoApp.init();
 	</script>
     
 </body>
