@@ -45,19 +45,19 @@
 							<div class="form-row">
 								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
 									<span>Aceite Hidráulico</span>
-									<input type="number" id="txtAceiteHidraulico" name="txtAceiteHidraulico" min="0.25" max="1" step="0.25" class="form-control" onchange="validateRange(this)">
+									<input type="number" id="txtAceiteHidraulico" name="txtAceiteHidraulico" min="0.25" max="1" step="0.25" class="form-control" onchange="validateRange(this)" required>
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
 									<span>Aceite Transmisión Automática</span>
-									<input type="number" id="txtAceiteTransmisionAut" name="txtAceiteTransmisionAut" min="0.25" max="1" step="0.25" class="form-control" onchange="validateRange(this)">
+									<input type="number" id="txtAceiteTransmisionAut" name="txtAceiteTransmisionAut" min="0.25" max="1" step="0.25" class="form-control" onchange="validateRange(this)" required>
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
 									<span>Anticongelante</span>
-									<input type="number" id="txtAnticongelante" name="txtAnticongelante" min="0.5" max="4" step="0.5" class="form-control" onchange="validateRange(this)">
+									<input type="number" id="txtAnticongelante" name="txtAnticongelante" min="0.5" max="4" step="0.5" class="form-control" onchange="validateRange(this)" required>
 								</div>
 							</div>
 							<div class="form-row">
@@ -153,7 +153,7 @@
 						 'agua_parabrisas': agua_parabrisas,
 						 'embrague': embrague,
 						 'publicidad': publicidad,
-						 'terminales': terminales
+						 'terminalesX': terminales
 					   };
 			return json;
 		}
@@ -162,7 +162,7 @@
 			var form = document.getElementById("myForm");
 			if(form.checkValidity() == false)
 				return;
-			
+			//Telegram.WebApp.sendData(JSON.stringify(getJsonData()));
 			Telegram.WebApp.close();
 		}
 		
