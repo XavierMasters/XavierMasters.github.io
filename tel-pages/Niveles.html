@@ -132,15 +132,15 @@
 			}
 		}
 		
-		const mainButton = Telegram.WebApp.MainButton;
-		//const mainButton = window.Telegram.WebApp.MainButton;
-        mainButton.text = "Save Preferences";
-        mainButton.enable();
-        mainButton.show();
-        // and make it send the "foods" object (as JSON string) back to the bot
-        mainButton.onClick(function(){
-          window.Telegram.WebApp.sendData(JSON.stringify({dato1: 120}));
-        });
+		' const mainButton = Telegram.WebApp.MainButton;
+		' //const mainButton = window.Telegram.WebApp.MainButton;
+        ' mainButton.text = "Save Preferences";
+        ' mainButton.enable();
+        ' mainButton.show();
+        ' // and make it send the "foods" object (as JSON string) back to the bot
+        ' mainButton.onClick(function(){
+          ' window.Telegram.WebApp.sendData(JSON.stringify({dato1: 120}));
+        ' });
 
 		const DemoApp = {
 			initData: Telegram.WebApp.initData || '',
