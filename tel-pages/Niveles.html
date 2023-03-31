@@ -20,8 +20,8 @@
     <script src="../Content/js/bootstrap-4.3.1.min.js"></script>
 	
 </head>
-<body>
-	<form>
+<body >
+	<form id="myForm" method="post">
 		<section>
 			<div class="row">
 				<div id="btn_status" class="hint" style="display: none;" class="col-lg-12 col-md-12 col-sm-12">
@@ -39,13 +39,7 @@
 							<div class="form-row">
 								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
 									<span>Aceite de motor</span>
-									<input type="number" id="txtAceitoMotor" name="txtAceitoMotor" min="0.5" max="4.0" step="0.5" class="form-control" onchange="validateRange(this)">
-								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
-									<span>Anticongelante</span>
-									<input type="number" id="txtAnticongelante" name="txtAnticongelante" min="0.5" max="4" step="0.5" class="form-control" onchange="validateRange(this)">
+									<input type="number" id="txtAceitoMotor" name="txtAceitoMotor" min="0.5" max="4.0" step="0.5" class="form-control" onchange="validateRange(this)" required>
 								</div>
 							</div>
 							<div class="form-row">
@@ -58,6 +52,12 @@
 								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
 									<span>Aceite Transmisión Automática</span>
 									<input type="number" id="txtAceiteTransmisionAut" name="txtAceiteTransmisionAut" min="0.25" max="1" step="0.25" class="form-control" onchange="validateRange(this)">
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
+									<span>Anticongelante</span>
+									<input type="number" id="txtAnticongelante" name="txtAnticongelante" min="0.5" max="4" step="0.5" class="form-control" onchange="validateRange(this)">
 								</div>
 							</div>
 							<div class="form-row">
@@ -103,6 +103,7 @@
 							   
 						</div>
 						<div class="card-footer text-muted">
+						<input type="submit" id="btnSubmit" value="Subscribe!" onclick="sendDataToBot()">
 						</div>
 					</div>
 				</div>
@@ -131,20 +132,36 @@
 			}
 		}
 		
-		var json = '{ "employees" : [' +
-					'{ "firstName":"John" , "lastName":"Doe" },' +
-					'{ "firstName":"Anna" , "lastName":"Smith" },' +
-					'{ "firstName":"Peter" , "lastName":"Jones" } ]}';
+		function getJsonData() {
+			var aceite_motor = $("#txtAceitoMotor").val();
+			var aceite_hidraulico = $("#txtAceiteHidraulico").val();
+			var aceite_transmision_aut = $("#txtAceiteTransmisionAut").val();
+			var anticongelante = $("#txtAnticongelante").val();
+			var frenos = $("#chkLiqFrenos").prop('checked');
+			var agua_parabrisas = $("#chkAguaP").prop('checked');
+			var embrague = $("#chkEmbrague").prop('checked');
+			var publicidad = $("#chkPublicidadP").prop('checked');
+			var terminales = $("#chkTerminales").prop('checked');
+			
+			var json = { 'aceite_motor': aceite_motor,
+						 'aceite_hidraulico': aceite_hidraulico,
+						 'aceite_transmision_aut': aceite_transmision_aut,
+						 'anticongelante': anticongelante,
+						 'frenos': frenos,
+						 'agua_parabrisas': agua_parabrisas,
+						 'embrague': embrague,
+						 'publicidad': publicidad,
+						 'terminales': terminales
+					   };
+			return json;
+		}
 		
-		const mainButton = Telegram.WebApp.MainButton;
-		//const mainButton = window.Telegram.WebApp.MainButton;
-        mainButton.text = "Save Preferences";
-        mainButton.enable();
-        mainButton.show();
-        // and make it send the "foods" object (as JSON string) back to the bot
-        mainButton.onClick(function(){
-          Telegram.WebApp.sendData(JSON.stringify(json));
-        });
+		function sendDataToBot() { 
+			Telegram.WebApp.sendData(JSON.stringify(getJsonData()));
+			Telegram.WebApp.close();
+		}
+		
+		
 
 		
 	</script>
