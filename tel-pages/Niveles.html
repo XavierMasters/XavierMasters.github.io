@@ -103,7 +103,6 @@
 							   
 						</div>
 						<div class="card-footer text-muted">
-							<button id="btnGauardar" class="btn btn-primary" onclick="DemoApp.sendMessage('');">« Guardar »</button>
 						</div>
 					</div>
 				</div>
@@ -170,71 +169,10 @@
 					mainButton.show();
 					el.innerHTML = 'Hide Main Button';
 				}
-			},
-			
-			// actions
-			sendMessage(msg_id, with_webview) {
-				if (!DemoApp.initDataUnsafe.query_id) {
-					alert('WebViewQueryId not defined');
-					return;
-				}
-
-				document.querySelectorAll('button').forEach((btn) => btn.disabled = true);
-
-				const btn = document.querySelector('#btn_status');
-				btn.textContent = 'Sending...';
-
-				DemoApp.apiRequest('sendMessage', {
-					msg_id: msg_id || '',
-					with_webview: !DemoApp.initDataUnsafe.receiver && with_webview ? 1 : 0
-				}, function(result) {
-					document.querySelectorAll('button').forEach((btn) => btn.disabled = false);
-
-					if (result.response) {
-						if (result.response.ok) {
-							btn.textContent = 'Message sent successfully!';
-							btn.className = 'ok';
-							btn.style.display = 'block';
-						} else {
-							btn.textContent = result.response.description;
-							btn.className = 'err';
-							btn.style.display = 'block';
-							alert(result.response.description);
-						}
-					} else if (result.error) {
-						btn.textContent = result.error;
-						btn.className = 'err';
-						btn.style.display = 'block';
-						alert(result.error);
-					} else {
-						btn.textContent = 'Unknown error';
-						btn.className = 'err';
-						btn.style.display = 'block';
-						alert('Unknown error');
-					}
-				});
-			},
-			checkInitData() {
-				const webViewStatus = document.querySelector('#webview_data_status');
-				if (DemoApp.initDataUnsafe.query_id &&
-					DemoApp.initData &&
-					webViewStatus.classList.contains('status_need')
-				) {
-					webViewStatus.classList.remove('status_need');
-					DemoApp.apiRequest('checkInitData', {}, function(result) {
-						if (result.ok) {
-							webViewStatus.textContent = 'Hash is correct (async)';
-							webViewStatus.className = 'ok';
-						} else {
-							webViewStatus.textContent = result.error + ' (async)';
-							webViewStatus.className = 'err';
-						}
-					});
-				}
 			}
 		}
 		
-		DemoApp.checkInitData();
+		
 		DemoApp.init();
 	</script>
     
