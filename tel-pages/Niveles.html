@@ -102,10 +102,12 @@
 							</div>
 							   
 						</div>
-						<div class="card-footer text-muted">
-						<input type="submit" id="btnSubmit" value="Subscribe!" onclick="sendDataToBot()">
+						<div class="card-footer ">
 						</div>
 					</div>
+				</div>
+				<div class="fixed-bottom">
+					<input type="submit" value="GUARDAR CAMBIOS" class="btn btn-primary btn-lg btn-block" onclick="sendDataToBot()">
 				</div>
 			</div>
 		</section>
@@ -157,6 +159,8 @@
 		}
 		
 		function sendDataToBot() { 
+			if(form.checkValidity() == false)
+				return;
 			Telegram.WebApp.sendData(JSON.stringify(getJsonData()));
 			Telegram.WebApp.close();
 		}
