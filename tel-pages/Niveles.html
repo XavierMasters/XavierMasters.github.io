@@ -18,7 +18,11 @@
 
     <script src="../Content/js/jquery-3.4.1.min.js"></script>
     <script src="../Content/js/bootstrap-4.3.1.min.js"></script>
-	
+	<style>
+		.status_need {
+            display: none;
+        }
+	</style>
 </head>
 <body >
 	<form id="myForm" method="post">
@@ -26,7 +30,7 @@
 			<div class="row">
 				<div id="btn_status" class="hint" style="display: none;" class="col-lg-12 col-md-12 col-sm-12">
 				</div>
-				<div class="col-lg-12 col-md-12 col-sm-12">
+				<div class="col-lg-12 col-md-12 col-sm-12 small">
 					Data passed to webview.
 					<span id="webview_data_status" class="status_need">Checking hash...</span>
 				</div>
@@ -41,73 +45,64 @@
 									<span>Aceite de motor</span>
 									<input type="number" id="txtAceitoMotor" name="txtAceitoMotor" min="0.5" max="4.0" step="0.5" class="form-control" onchange="validateRange(this)" required>
 								</div>
-							</div>
-							<div class="form-row">
 								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
 									<span>Aceite Hidráulico</span>
 									<input type="number" id="txtAceiteHidraulico" name="txtAceiteHidraulico" min="0.25" max="1" step="0.25" class="form-control" onchange="validateRange(this)" required>
 								</div>
-							</div>
-							<div class="form-row">
 								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
 									<span>Aceite Transmisión Automática</span>
 									<input type="number" id="txtAceiteTransmisionAut" name="txtAceiteTransmisionAut" min="0.25" max="1" step="0.25" class="form-control" onchange="validateRange(this)" required>
 								</div>
-							</div>
-							<div class="form-row">
 								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
 									<span>Anticongelante</span>
 									<input type="number" id="txtAnticongelante" name="txtAnticongelante" min="0.5" max="4" step="0.5" class="form-control" onchange="validateRange(this)" required>
 								</div>
 							</div>
 							<div class="form-row">
-								<div class="form-group col-lg-12 col-md-12 col-sm-12">
+								<div class="form-group col-auto">
 									<div class="form-check form-check-inline">
-										<span class="form-check-label">Líquido de Frenos&nbsp;&nbsp;</span>
+										<span class="form-check-label">Líquido Frenos&nbsp;&nbsp;</span>
 										<input type="checkbox" id="chkLiqFrenos" name="chkLiqFrenos" class="form-check-input">
 									</div>
 								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
+								<div class="form-group  col-auto">
 									<div class="form-check form-check-inline">
 										<span class="form-check-label">Agua Parabrisas&nbsp;&nbsp;</span>
 										<input type="checkbox" id="chkAguaP" name="chkAguaP" class="form-check-input">
 									</div>
 								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
+								<div class="form-group  col-auto">
 									<div class="form-check form-check-inline">
 										<span class="form-check-label">Embrague&nbsp;&nbsp;</span>
 										<input type="checkbox" id="chkEmbrague" name="chkEmbrague" class="form-check-input">
 									</div>
 								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
+								<div class="form-group  col-auto">
 									<div class="form-check form-check-inline">
 										<span class="form-check-label">Publicidad&nbsp;&nbsp;</span>
 										<input type="checkbox" id="chkPublicidadP" name="chkPublicidad" class="form-check-input">
 									</div>
 								</div>
-							</div>
-							<div class="form-row">
-								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
+								<div class="form-group  col-auto">
 									<div class="form-check form-check-inline">
 										<span class="form-check-label">Terminales&nbsp;&nbsp;</span>
 										<input type="checkbox" id="chkTerminales" name="chkTerminales" class="form-check-input">
 									</div>
 								</div>
 							</div>
-							   
+							<div class="form-row">
+								<div class="form-group  col-lg-12 col-md-12 col-sm-12">
+									<span>Observaciones</span>
+									<textarea id="txtObservaciones" name="txtObservaciones" rows="3"  maxlength="200" class="form-control"></textarea>
+								</div>
+							</div>
 						</div>
 						<div class="card-footer ">
 						</div>
 					</div>
 				</div>
 				<div class="fixed-bottom">
-					<input type="submit" value="GUARDAR CAMBIOS" class="btn btn-primary btn-lg btn-block" onclick="sendDataToBot()">
+					<input type="submit" value="ENVIAR NIVELES" class="btn btn-primary btn-lg btn-block" onclick="sendDataToBot()">
 				</div>
 			</div>
 		</section>
@@ -166,8 +161,40 @@
 			//Telegram.WebApp.close();
 		}
 		
-		
+		const SgaApp = {
+			initData: Telegram.WebApp.initData || '',
+			initDataUnsafe: Telegram.WebApp.initDataUnsafe || {},
+			//MainButton: Telegram.WebApp.MainButton,
 
+			init(options) {
+				//document.body.style.visibility = '';
+				Telegram.WebApp.ready();
+			},
+			close() {
+				Telegram.WebApp.close();
+			},
+			checkInitData() {
+				const webViewStatus = document.querySelector('#webview_data_status');
+				if (SgaApp.initDataUnsafe.query_id &&
+					SgaApp.initData &&
+					webViewStatus.classList.contains('status_need')
+				) {
+					webViewStatus.classList.remove('status_need');
+					SgaApp.apiRequest('checkInitData', {}, function(result) {
+						if (result.ok) {
+							webViewStatus.textContent = 'Hash is correct (async)';
+							webViewStatus.className = 'ok';
+						} else {
+							webViewStatus.textContent = result.error + ' (async)';
+							webViewStatus.className = 'err';
+						}
+					});
+				}
+			}
+		}
+
+		SgaApp.checkInitData();
+		SgaApp.init();
 		
 	</script>
     
