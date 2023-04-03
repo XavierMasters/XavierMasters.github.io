@@ -130,6 +130,7 @@
 			var embrague = $("#chkEmbrague").prop('checked');
 			var publicidad = $("#chkPublicidadP").prop('checked');
 			var terminales = $("#chkTerminales").prop('checked');
+			var observaciones = $("#txtObservaciones").val();
 			
 			var json = { 'aceite_motor': aceite_motor,
 						 'aceite_hidraulico': aceite_hidraulico,
@@ -139,7 +140,8 @@
 						 'agua_parabrisas': agua_parabrisas,
 						 'embrague': embrague,
 						 'publicidad': publicidad,
-						 'terminales': terminales
+						 'terminales': terminales,
+						 'observaciones': observaciones
 					   };
 			return json;
 		}
