@@ -136,6 +136,7 @@
 			var embrague = $("#chkEmbrague").prop('checked');
 			var publicidad = $("#chkPublicidadP").prop('checked');
 			var terminales = $("#chkTerminales").prop('checked');
+			var presion_aire = $("#chkPresionAire").prop('checked');
 			var observaciones = $("#txtObservaciones").val();
 			
 			var json = { 'aceite_motor': aceite_motor,
@@ -147,6 +148,7 @@
 						 'embrague': embrague,
 						 'publicidad': publicidad,
 						 'terminales': terminales,
+						 'presion_aire': presion_aire,
 						 'observaciones': observaciones
 					   };
 			return json;
