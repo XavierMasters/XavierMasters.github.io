@@ -10,14 +10,14 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="robots" content="noindex,nofollow" />
 
-    <link rel="stylesheet" href="../Content/bootstrap-4.3.1.min.css" />
-    <link rel="stylesheet" href="../Content/font-awesome-4.7.0.min.css" />
+    <link rel="stylesheet" href="../../Content/bootstrap-4.3.1.min.css" />
+    <link rel="stylesheet" href="../../Content/font-awesome-4.7.0.min.css" />
 	
 	<!-- Load the Telegram Library before any other scripts-->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
-    <script src="../Content/js/jquery-3.4.1.min.js"></script>
-    <script src="../Content/js/bootstrap-4.3.1.min.js"></script>
+    <script src="../../Content/js/jquery-3.4.1.min.js"></script>
+    <script src="../../Content/js/bootstrap-4.3.1.min.js"></script>
 </head>
 <body >
 	<form id="myForm" method="post">
@@ -36,180 +36,180 @@
 								  <span class="fa fa-plus">&nbsp;Agregar Empleado</span>
 								</a>
 							</div><br />
-							<div class="form-row">
+							<div class="form-row border-bottom border-secondary">
 								<div class="form-group col-auto">
 									<span>1. Expediente</span>
-									<input type="number" id="txtExpediente1" name="txtExpediente1" min="0" class="form-control" onchange="validarExpediente(this)" required>
+									<input type="number" id="txtExpediente1" name="txtExpediente1" min="0" class="form-control" onchange="validarExpediente(this)" style="max-width:120px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Inicio</span>
-									<input type="datetime-local" id="txtFechaIni1" name="txtFechaIni1" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaIni1" name="txtFechaIni1" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Fin</span>
-									<input type="datetime-local" id="txtFechaFin1" name="txtFechaFin1" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaFin1" name="txtFechaFin1" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Total Horas</span>
 									<input type="text" id="txtTotalHoras1" name="txtTotalHoras1" class="form-control" style="width:80px" disabled></input>
 								</div>
 							</div>
-							<div class="form-row" style="display: none" id="pnlEmpleado2">
+							<div class="form-row border-bottom border-secondary" style="display: none;" id="pnlEmpleado2">
 								<div class="form-group col-auto">
 									<span>2. Expediente</span>
-									<input type="number" id="txtExpediente2" name="txtExpediente2" min="0" class="form-control" onchange="validarExpediente(this)" required>
+									<input type="number" id="txtExpediente2" name="txtExpediente2" min="0" class="form-control" onchange="validarExpediente(this)" style="max-width:120px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Inicio</span>
-									<input type="datetime-local" id="txtFechaIni2" name="txtFechaIni2" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaIni2" name="txtFechaIni2" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Fin</span>
-									<input type="datetime-local" id="txtFechaFin2" name="txtFechaFin2" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaFin2" name="txtFechaFin2" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Total Horas</span>
 									<input type="text" id="txtTotalHoras2" name="txtTotalHoras2" class="form-control" style="width:80px" disabled></input>
 								</div>
 							</div>
-							<div class="form-row" style="display: none" id="pnlEmpleado3">
+							<div class="form-row border-bottom border-secondary" style="display: none" id="pnlEmpleado3">
 								<div class="form-group col-auto">
 									<span>3. Expediente</span>
-									<input type="number" id="txtExpediente3" name="txtExpediente3" min="0" class="form-control" onchange="validarExpediente(this)" required>
+									<input type="number" id="txtExpediente3" name="txtExpediente3" min="0" class="form-control" onchange="validarExpediente(this)" style="max-width:120px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Inicio</span>
-									<input type="datetime-local" id="txtFechaIni3" name="txtFechaIni3" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaIni3" name="txtFechaIni3" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Fin</span>
-									<input type="datetime-local" id="txtFechaFin3" name="txtFechaFin3" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaFin3" name="txtFechaFin3" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Total Horas</span>
 									<input type="text" id="txtTotalHoras3" name="txtTotalHoras3" class="form-control" style="width:80px" disabled></input>
 								</div>
 							</div>
-							<div class="form-row" style="display: none" id="pnlEmpleado4">
+							<div class="form-row border-bottom border-secondary" style="display: none" id="pnlEmpleado4">
 								<div class="form-group col-auto">
 									<span>4. Expediente</span>
-									<input type="number" id="txtExpediente4" name="txtExpediente4" min="0" class="form-control" onchange="validarExpediente(this)" required>
+									<input type="number" id="txtExpediente4" name="txtExpediente4" min="0" class="form-control" onchange="validarExpediente(this)" style="max-width:120px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Inicio</span>
-									<input type="datetime-local" id="txtFechaIni4" name="txtFechaIni4" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaIni4" name="txtFechaIni4" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Fin</span>
-									<input type="datetime-local" id="txtFechaFin4" name="txtFechaFin4" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaFin4" name="txtFechaFin4" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Total Horas</span>
 									<input type="text" id="txtTotalHoras4" name="txtTotalHoras4" class="form-control" style="width:80px" disabled></input>
 								</div>
 							</div>
-							<div class="form-row" style="display: none" id="pnlEmpleado5">
+							<div class="form-row border-bottom border-secondary" style="display: none" id="pnlEmpleado5">
 								<div class="form-group col-auto">
 									<span>5. Expediente</span>
-									<input type="number" id="txtExpediente5" name="txtExpediente5" min="0" class="form-control" onchange="validarExpediente(this)" required>
+									<input type="number" id="txtExpediente5" name="txtExpediente5" min="0" class="form-control" onchange="validarExpediente(this)" style="max-width:120px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Inicio</span>
-									<input type="datetime-local" id="txtFechaIni5" name="txtFechaIni5" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaIni5" name="txtFechaIni5" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Fin</span>
-									<input type="datetime-local" id="txtFechaFin5" name="txtFechaFin5" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaFin5" name="txtFechaFin5" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Total Horas</span>
 									<input type="text" id="txtTotalHoras5" name="txtTotalHoras5" class="form-control" style="width:80px" disabled></input>
 								</div>
 							</div>
-							<div class="form-row" style="display: none" id="pnlEmpleado6">
+							<div class="form-row border-bottom border-secondary" style="display: none" id="pnlEmpleado6">
 								<div class="form-group col-auto">
 									<span>6. Expediente</span>
-									<input type="number" id="txtExpediente6" name="txtExpediente6" min="0" class="form-control" onchange="validarExpediente(this)" required>
+									<input type="number" id="txtExpediente6" name="txtExpediente6" min="0" class="form-control" onchange="validarExpediente(this)" style="max-width:120px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Inicio</span>
-									<input type="datetime-local" id="txtFechaIni6" name="txtFechaIni6" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaIni6" name="txtFechaIni6" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Fin</span>
-									<input type="datetime-local" id="txtFechaFin6" name="txtFechaFin6" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaFin6" name="txtFechaFin6" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Total Horas</span>
 									<input type="text" id="txtTotalHoras6" name="txtTotalHoras6" class="form-control" style="width:80px" disabled></input>
 								</div>
 							</div>
-							<div class="form-row" style="display: none" id="pnlEmpleado7">
+							<div class="form-row border-bottom border-secondary" style="display: none" id="pnlEmpleado7">
 								<div class="form-group col-auto">
 									<span>7. Expediente</span>
-									<input type="number" id="txtExpediente7" name="txtExpediente7" min="0" class="form-control" onchange="validarExpediente(this)" required>
+									<input type="number" id="txtExpediente7" name="txtExpediente7" min="0" class="form-control" onchange="validarExpediente(this)" style="max-width:120px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Inicio</span>
-									<input type="datetime-local" id="txtFechaIni7" name="txtFechaIni7" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaIni7" name="txtFechaIni7" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Fin</span>
-									<input type="datetime-local" id="txtFechaFin7" name="txtFechaFin7" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaFin7" name="txtFechaFin7" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Total Horas</span>
 									<input type="text" id="txtTotalHoras7" name="txtTotalHoras7" class="form-control" style="width:80px" disabled></input>
 								</div>
 							</div>
-							<div class="form-row" style="display: none" id="pnlEmpleado8">
+							<div class="form-row border-bottom border-secondary" style="display: none" id="pnlEmpleado8">
 								<div class="form-group col-auto">
 									<span>8. Expediente</span>
-									<input type="number" id="txtExpediente8" name="txtExpediente8" min="0" class="form-control" onchange="validarExpediente(this)" required>
+									<input type="number" id="txtExpediente8" name="txtExpediente8" min="0" class="form-control" onchange="validarExpediente(this)" style="max-width:120px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Inicio</span>
-									<input type="datetime-local" id="txtFechaIni8" name="txtFechaIni8" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaIni8" name="txtFechaIni8" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Fin</span>
-									<input type="datetime-local" id="txtFechaFin8" name="txtFechaFin8" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaFin8" name="txtFechaFin8" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Total Horas</span>
 									<input type="text" id="txtTotalHoras8" name="txtTotalHoras8" class="form-control" style="width:80px" disabled></input>
 								</div>
 							</div>
-							<div class="form-row" style="display: none" id="pnlEmpleado9">
+							<div class="form-row border-bottom border-secondary" style="display: none" id="pnlEmpleado9">
 								<div class="form-group col-auto">
 									<span>9. Expediente</span>
-									<input type="number" id="txtExpediente9" name="txtExpediente9" min="0" class="form-control" onchange="validarExpediente(this)" required>
+									<input type="number" id="txtExpediente9" name="txtExpediente9" min="0" class="form-control" onchange="validarExpediente(this)" style="max-width:120px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Inicio</span>
-									<input type="datetime-local" id="txtFechaIni9" name="txtFechaIni9" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaIni9" name="txtFechaIni9" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Fin</span>
-									<input type="datetime-local" id="txtFechaFin9" name="txtFechaFin9" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaFin9" name="txtFechaFin9" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Total Horas</span>
 									<input type="text" id="txtTotalHoras9" name="txtTotalHoras9" class="form-control" style="width:80px" disabled></input>
 								</div>
 							</div>
-							<div class="form-row" style="display: none" id="pnlEmpleado10">
+							<div class="form-row border-bottom border-secondary" style="display: none" id="pnlEmpleado10">
 								<div class="form-group col-auto">
 									<span>10. Expediente</span>
-									<input type="number" id="txtExpediente10" name="txtExpediente10" min="0" class="form-control" onchange="validarExpediente(this)" required>
+									<input type="number" id="txtExpediente10" name="txtExpediente10" min="0" class="form-control" onchange="validarExpediente(this)" style="max-width:120px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Inicio</span>
-									<input type="datetime-local" id="txtFechaIni10" name="txtFechaIni10" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaIni10" name="txtFechaIni10" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Fecha Fin</span>
-									<input type="datetime-local" id="txtFechaFin10" name="txtFechaFin10" class="form-control" onchange="validateRange(this)" required>
+									<input type="datetime-local" id="txtFechaFin10" name="txtFechaFin10" class="form-control" onchange="validateRange(this)" style="max-width:215px" required>
 								</div>
 								<div class="form-group col-auto">
 									<span>Total Horas</span>
