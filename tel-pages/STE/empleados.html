@@ -1,0 +1,338 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="MobileOptimized" content="176" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <link rel="stylesheet" href="../Content/bootstrap-4.3.1.min.css" />
+    <link rel="stylesheet" href="../Content/font-awesome-4.7.0.min.css" />
+	
+	<!-- Load the Telegram Library before any other scripts-->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <script src="../Content/js/jquery-3.4.1.min.js"></script>
+    <script src="../Content/js/bootstrap-4.3.1.min.js"></script>
+</head>
+<body >
+	<form id="myForm" method="post">
+		<section>
+			<div class="row">
+				<div id="btn_status" class="hint" style="display: none;" class="col-lg-12 col-md-12 col-sm-12">
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="card card-shadow">
+						<div class="card-header">
+							<h4>Ingresa la información de los niveles:</h4>
+						</div>
+						<div class="card-body">
+							<div class="form-row">
+								<a href="#" id="lnkAgregarEmpleado" class="btn btn-outline-success" onclick="agregarEmpleado()">
+								  <span class="fa fa-plus">&nbsp;Agregar Empleado</span>
+								</a>
+							</div><br />
+							<div class="form-row">
+								<div class="form-group col-auto">
+									<span>1. Expediente</span>
+									<input type="number" id="txtExpediente1" name="txtExpediente1" min="0" class="form-control" onchange="validarExpediente(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Inicio</span>
+									<input type="datetime-local" id="txtFechaIni1" name="txtFechaIni1" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Fin</span>
+									<input type="datetime-local" id="txtFechaFin1" name="txtFechaFin1" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Total Horas</span>
+									<input type="text" id="txtTotalHoras1" name="txtTotalHoras1" class="form-control" style="width:80px" disabled></input>
+								</div>
+							</div>
+							<div class="form-row" style="display: none" id="pnlEmpleado2">
+								<div class="form-group col-auto">
+									<span>2. Expediente</span>
+									<input type="number" id="txtExpediente2" name="txtExpediente2" min="0" class="form-control" onchange="validarExpediente(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Inicio</span>
+									<input type="datetime-local" id="txtFechaIni2" name="txtFechaIni2" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Fin</span>
+									<input type="datetime-local" id="txtFechaFin2" name="txtFechaFin2" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Total Horas</span>
+									<input type="text" id="txtTotalHoras2" name="txtTotalHoras2" class="form-control" style="width:80px" disabled></input>
+								</div>
+							</div>
+							<div class="form-row" style="display: none" id="pnlEmpleado3">
+								<div class="form-group col-auto">
+									<span>3. Expediente</span>
+									<input type="number" id="txtExpediente3" name="txtExpediente3" min="0" class="form-control" onchange="validarExpediente(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Inicio</span>
+									<input type="datetime-local" id="txtFechaIni3" name="txtFechaIni3" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Fin</span>
+									<input type="datetime-local" id="txtFechaFin3" name="txtFechaFin3" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Total Horas</span>
+									<input type="text" id="txtTotalHoras3" name="txtTotalHoras3" class="form-control" style="width:80px" disabled></input>
+								</div>
+							</div>
+							<div class="form-row" style="display: none" id="pnlEmpleado4">
+								<div class="form-group col-auto">
+									<span>4. Expediente</span>
+									<input type="number" id="txtExpediente4" name="txtExpediente4" min="0" class="form-control" onchange="validarExpediente(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Inicio</span>
+									<input type="datetime-local" id="txtFechaIni4" name="txtFechaIni4" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Fin</span>
+									<input type="datetime-local" id="txtFechaFin4" name="txtFechaFin4" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Total Horas</span>
+									<input type="text" id="txtTotalHoras4" name="txtTotalHoras4" class="form-control" style="width:80px" disabled></input>
+								</div>
+							</div>
+							<div class="form-row" style="display: none" id="pnlEmpleado5">
+								<div class="form-group col-auto">
+									<span>5. Expediente</span>
+									<input type="number" id="txtExpediente5" name="txtExpediente5" min="0" class="form-control" onchange="validarExpediente(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Inicio</span>
+									<input type="datetime-local" id="txtFechaIni5" name="txtFechaIni5" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Fin</span>
+									<input type="datetime-local" id="txtFechaFin5" name="txtFechaFin5" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Total Horas</span>
+									<input type="text" id="txtTotalHoras5" name="txtTotalHoras5" class="form-control" style="width:80px" disabled></input>
+								</div>
+							</div>
+							<div class="form-row" style="display: none" id="pnlEmpleado6">
+								<div class="form-group col-auto">
+									<span>6. Expediente</span>
+									<input type="number" id="txtExpediente6" name="txtExpediente6" min="0" class="form-control" onchange="validarExpediente(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Inicio</span>
+									<input type="datetime-local" id="txtFechaIni6" name="txtFechaIni6" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Fin</span>
+									<input type="datetime-local" id="txtFechaFin6" name="txtFechaFin6" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Total Horas</span>
+									<input type="text" id="txtTotalHoras6" name="txtTotalHoras6" class="form-control" style="width:80px" disabled></input>
+								</div>
+							</div>
+							<div class="form-row" style="display: none" id="pnlEmpleado7">
+								<div class="form-group col-auto">
+									<span>7. Expediente</span>
+									<input type="number" id="txtExpediente7" name="txtExpediente7" min="0" class="form-control" onchange="validarExpediente(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Inicio</span>
+									<input type="datetime-local" id="txtFechaIni7" name="txtFechaIni7" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Fin</span>
+									<input type="datetime-local" id="txtFechaFin7" name="txtFechaFin7" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Total Horas</span>
+									<input type="text" id="txtTotalHoras7" name="txtTotalHoras7" class="form-control" style="width:80px" disabled></input>
+								</div>
+							</div>
+							<div class="form-row" style="display: none" id="pnlEmpleado8">
+								<div class="form-group col-auto">
+									<span>8. Expediente</span>
+									<input type="number" id="txtExpediente8" name="txtExpediente8" min="0" class="form-control" onchange="validarExpediente(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Inicio</span>
+									<input type="datetime-local" id="txtFechaIni8" name="txtFechaIni8" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Fin</span>
+									<input type="datetime-local" id="txtFechaFin8" name="txtFechaFin8" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Total Horas</span>
+									<input type="text" id="txtTotalHoras8" name="txtTotalHoras8" class="form-control" style="width:80px" disabled></input>
+								</div>
+							</div>
+							<div class="form-row" style="display: none" id="pnlEmpleado9">
+								<div class="form-group col-auto">
+									<span>9. Expediente</span>
+									<input type="number" id="txtExpediente9" name="txtExpediente9" min="0" class="form-control" onchange="validarExpediente(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Inicio</span>
+									<input type="datetime-local" id="txtFechaIni9" name="txtFechaIni9" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Fin</span>
+									<input type="datetime-local" id="txtFechaFin9" name="txtFechaFin9" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Total Horas</span>
+									<input type="text" id="txtTotalHoras9" name="txtTotalHoras9" class="form-control" style="width:80px" disabled></input>
+								</div>
+							</div>
+							<div class="form-row" style="display: none" id="pnlEmpleado10">
+								<div class="form-group col-auto">
+									<span>10. Expediente</span>
+									<input type="number" id="txtExpediente10" name="txtExpediente10" min="0" class="form-control" onchange="validarExpediente(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Inicio</span>
+									<input type="datetime-local" id="txtFechaIni10" name="txtFechaIni10" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Fecha Fin</span>
+									<input type="datetime-local" id="txtFechaFin10" name="txtFechaFin10" class="form-control" onchange="validateRange(this)" required>
+								</div>
+								<div class="form-group col-auto">
+									<span>Total Horas</span>
+									<input type="text" id="txtTotalHoras10" name="txtTotalHoras10" class="form-control" style="width:80px" disabled></input>
+								</div>
+							</div>
+						</div>
+						<div class="card-footer ">
+						</div>
+					</div>
+				</div>
+				<div class="fixed-bottom">
+					<!-- <input type="submit" value="ENVIAR NIVELES" class="btn btn-primary btn-lg btn-block" onclick="sendDataToBot()"> -->
+				</div>
+			</div>
+		</section>
+	</form>
+	
+	<script type="application/javascript">
+			window.Telegram.WebApp.ready();
+            window.Telegram.WebApp.expand();
+            // initData is empty object
+            let initData = window.Telegram.WebApp.initData;
+             // initDataUnsafe is empty object,too
+            let initDataUnsafe = window.Telegram.WebApp.initDataUnsafe;
+            window.Telegram.WebApp.MainButton.showProgress()
+            window.Telegram.WebApp.MainButton.setText('submit').show().enable()
+            window.Telegram.WebApp.MainButton.isProgressVisible = "true"
+            //This Event is not working, Why?
+            window.Telegram.WebApp.MainButton.onClick(() => {alert('submitted')});
+            //window.document.getElementById('tg').innerHTML =             JSON.stringify(window.Telegram.WebA
+			
+			function validarExpediente(me) {
+			//console.log(me.id + ' ' + me.value);
+				var value = me.value;
+				if(value < 0 || Number.isInteger(numero) == false) {
+					me.value = "";
+				}
+			}
+			
+			function validateRange(me) {
+				//console.log(me.id + ' ' + me.value);
+				var num = (me.id).substring((me.id).length-1);
+				var txtTotalHoras = $('#txtTotalHoras' + num);
+				txtTotalHoras.val('');
+				if(isNaN(Date.parse(me.value))) {
+					me.value = "";
+					return;
+				}
+				
+				
+				var txt1 = $('#txtFechaIni' + num);
+				var txt2 = $('#txtFechaFin' + num);
+				
+				if(txt1.val() == '' || txt2.val() == '')
+					return;
+				var fechaIni = new Date(txt1.val());
+				var fechaFin = new Date(txt2.val());
+				
+				if(fechaIni > fechaFin) {
+					alert('Fechas no válidas, favor de verificar.');
+					return;
+				}
+		
+				// segundos = milisegundos/1000
+				// minutos = segundos/60
+				// horas = minutos/60
+				// Días = horas/24
+				 
+				const diffInDays = Math.floor((fechaFin - fechaIni) / (1000 * 60 * 60 * 24));
+				const diffInHoras = ((fechaFin - fechaIni) / (1000 * 60 * 60)).toFixed(2);
+				const diffInMinutos = Math.floor((fechaFin - fechaIni) / (1000 * 60));
+				console.log('Días: ' + diffInDays + ' Horas: ' + diffInHoras + ' Minutos: ' + diffInMinutos);
+				
+				txtTotalHoras.val(diffInHoras);
+			}
+			
+			function agregarEmpleado() {
+				var pnl2 = $('#pnlEmpleado2');
+				var pnl3 = $('#pnlEmpleado3');
+				var pnl4 = $('#pnlEmpleado4');
+				var pnl5 = $('#pnlEmpleado5');
+				var pnl6 = $('#pnlEmpleado6');
+				var pnl7 = $('#pnlEmpleado7');
+				var pnl8 = $('#pnlEmpleado8');
+				var pnl9 = $('#pnlEmpleado9');
+				var pnl10 = $('#pnlEmpleado10');
+				
+				if(pnl2.is(":visible") == false) {
+					pnl2.show(500);
+				}
+				else if(pnl3.is(":visible") == false) {
+					pnl3.show(500);
+				}
+				else if(pnl4.is(":visible") == false) {
+					pnl4.show(500);
+				}
+				else if(pnl5.is(":visible") == false) {
+					pnl5.show(500);
+				}
+				else if(pnl6.is(":visible") == false) {
+					pnl6.show(500);
+				}
+				else if(pnl7.is(":visible") == false) {
+					pnl7.show(500);
+				}
+				else if(pnl8.is(":visible") == false) {
+					pnl8.show(500);
+				}
+				else if(pnl9.is(":visible") == false) {
+					pnl9.show(500);
+				}
+				else if(pnl10.is(":visible") == false) {
+					pnl10.show(500);
+				}
+				else {
+					alert('No se pueden agregagar mas empleados. El límite es de 10.\nPara agregar más debe realizar una captura adicional de Tiempo Extra.');
+				}
+					
+			}
+		
+		
+	</script>
+    
+</body>
+</html>
