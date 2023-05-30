@@ -229,37 +229,6 @@
 	</form>
 	
 	<script type="application/javascript">
-		const STEApp = {
-			initData: window.Telegram.WebApp.initData || '',
-			initDataUnsafe: window.Telegram.WebApp.initDataUnsafe || {},
-			MainButton: Telegram.WebApp.MainButton,
-
-			init(options) {
-				document.body.style.visibility = '';
-				window.Telegram.WebApp.ready();
-				window.Telegram.WebApp.expand();
-				window.Telegram.WebApp.MainButton.setParams({
-					text: 'ENVIAR DATOS',
-					is_visible: true
-				}).onClick(
-					<!-- DemoApp.close -->
-					alert('Prueba click');
-				);
-			},
-			<!-- expand() { -->
-				<!-- window.Telegram.WebApp.expand(); -->
-			<!-- }, -->
-			close() {
-				window.Telegram.WebApp.close();
-			},
-			// Alerts
-			showAlert(message) {
-				window.Telegram.WebApp.showAlert(message);
-			}
-		}
-	</script>
-	
-	<script type="application/javascript">
 			<!-- window.Telegram.WebApp.ready(); -->
             <!-- window.Telegram.WebApp.expand(); -->
             <!-- // initData is empty object -->
@@ -272,8 +241,34 @@
             <!-- //This Event is not working, Why? -->
             <!-- window.Telegram.WebApp.MainButton.onClick(() => {alert('submitted')}); -->
 			
+			const STEApp = {
+				initData: window.Telegram.WebApp.initData || '',
+				initDataUnsafe: window.Telegram.WebApp.initDataUnsafe || {},
+				MainButton: Telegram.WebApp.MainButton,
+
+				init(options) {
+					document.body.style.visibility = '';
+					window.Telegram.WebApp.ready();
+					window.Telegram.WebApp.expand();
+					window.Telegram.WebApp.MainButton.setParams({
+						text: 'ENVIAR DATOS',
+						is_visible: true
+					});
+				},
+				<!-- expand() { -->
+					<!-- window.Telegram.WebApp.expand(); -->
+				<!-- }, -->
+				close() {
+					window.Telegram.WebApp.close();
+				}
+			}
+			
 			STEApp.init();
-			STEApp.showAlert('prueba alert 2');
+			
+			window.Telegram.WebApp.MainButton.onClick(() => {
+				alert('Prueba click 1')
+			});
+			
 			
 			function validarExpediente(me) {
 			//console.log(me.id + ' ' + me.value);
