@@ -19,7 +19,7 @@
     <script src="../../Content/js/jquery-3.4.1.min.js"></script>
     <script src="../../Content/js/bootstrap-4.3.1.min.js"></script>
 </head>
-<body >
+<body class="" style="visibility: hidden;">
 	<form id="myForm" method="post">
 		<section>
 			<div class="row">
@@ -229,18 +229,51 @@
 	</form>
 	
 	<script type="application/javascript">
-			window.Telegram.WebApp.ready();
-            window.Telegram.WebApp.expand();
-            // initData is empty object
-            let initData = window.Telegram.WebApp.initData;
-             // initDataUnsafe is empty object,too
-            let initDataUnsafe = window.Telegram.WebApp.initDataUnsafe;
-            window.Telegram.WebApp.MainButton.showProgress()
-            window.Telegram.WebApp.MainButton.setText('submit').show().enable()
-            window.Telegram.WebApp.MainButton.isProgressVisible = "true"
-            //This Event is not working, Why?
-            window.Telegram.WebApp.MainButton.onClick(() => {alert('submitted')});
-            //window.document.getElementById('tg').innerHTML =             JSON.stringify(window.Telegram.WebA
+		const STEApp = {
+			initData: window.Telegram.WebApp.initData || '',
+			initDataUnsafe: window.Telegram.WebApp.initDataUnsafe || {},
+			MainButton: Telegram.WebApp.MainButton,
+
+			init(options) {
+				document.body.style.visibility = '';
+				window.Telegram.WebApp.ready();
+				window.Telegram.WebApp.expand();
+				window.Telegram.WebApp.MainButton.setParams({
+					text: 'ENVIAR DATOS',
+					is_visible: true
+				}).onClick(
+					<!-- DemoApp.close -->
+					alert('Prueba click');
+				);
+			},
+			<!-- expand() { -->
+				<!-- window.Telegram.WebApp.expand(); -->
+			<!-- }, -->
+			close() {
+				window.Telegram.WebApp.close();
+			},
+			// Alerts
+			showAlert(message) {
+				window.Telegram.WebApp.showAlert(message);
+			}
+		}
+	</script>
+	
+	<script type="application/javascript">
+			<!-- window.Telegram.WebApp.ready(); -->
+            <!-- window.Telegram.WebApp.expand(); -->
+            <!-- // initData is empty object -->
+            <!-- let initData = window.Telegram.WebApp.initData; -->
+             <!-- // initDataUnsafe is empty object,too -->
+            <!-- let initDataUnsafe = window.Telegram.WebApp.initDataUnsafe; -->
+            <!-- window.Telegram.WebApp.MainButton.showProgress() -->
+            <!-- window.Telegram.WebApp.MainButton.setText('submit').show().enable() -->
+            <!-- window.Telegram.WebApp.MainButton.isProgressVisible = "true" -->
+            <!-- //This Event is not working, Why? -->
+            <!-- window.Telegram.WebApp.MainButton.onClick(() => {alert('submitted')}); -->
+			
+			STEApp.init();
+			STEApp.showAlert('prueba alert 2');
 			
 			function validarExpediente(me) {
 			//console.log(me.id + ' ' + me.value);
@@ -269,7 +302,7 @@
 				var fechaIni = new Date(txt1.val());
 				var fechaFin = new Date(txt2.val());
 				
-				if(fechaIni > fechaFin) {
+				if(fechaIni >= fechaFin) {
 					alert('Fechas no válidas, favor de verificar.');
 					return;
 				}
