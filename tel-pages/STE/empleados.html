@@ -30,7 +30,7 @@
 						<div class="card-header">
 							<h4>Ingresa la información de los niveles:</h4>
 						</div>
-						<div class="card-body">
+						<div class="card-body" id="pnlEmpleados">
 							<div class="form-row">
 								<a href="#" id="lnkAgregarEmpleado" class="btn btn-outline-success" onclick="agregarEmpleado()">
 								  <span class="fa fa-plus">&nbsp;Agregar Empleado</span>
@@ -222,7 +222,7 @@
 					</div>
 				</div>
 				<div class="fixed-bottom">
-					<!-- <input type="submit" value="ENVIAR NIVELES" class="btn btn-primary btn-lg btn-block" onclick="sendDataToBot()"> -->
+					<!-- <input type="submit" value="ENVIAR DATOS TEST" class="btn btn-primary btn-lg btn-block" onclick="sendDataToBot()"> -->
 				</div>
 			</div>
 		</section>
@@ -277,9 +277,36 @@
 			});
 			
 			function sendDataToBot() {
-				alert('datos enviados');
-				<!-- Telegram.WebApp.sendData(JSON.stringify(getJsonData())); -->
+				var form = document.getElementById("myForm");
+				if(form.checkValidity() == false)
+					return;
+				let json = getJsonData();
+				Telegram.WebApp.sendData(json);
 				XAVApp.close();
+			}
+			
+			function getJsonData() {
+				var map = new Map();
+				
+				var pnlEmpleados = document.getElementById("pnlEmpleados");
+				 $(pnlEmpleados).find('input') <!-- find('input:text, input:password, input:file, select, textarea') -->
+						.each(function() {
+							var el = $(this);
+							var id = el[0].id;
+							map.set(el[0].id, el[0].value);
+						   
+						});
+				
+				for (let element of map) {
+				  console.log(element);
+				}
+				
+				<!-- for (let [key, value] of map) { -->
+				  <!-- console.log(key + " - " + value); -->
+				<!-- } -->
+
+				const json = JSON.stringify(Object.fromEntries(map));
+				return json;
 			}
 			
 			function validarExpediente(me) {
