@@ -268,14 +268,15 @@
 			XAVApp.init();
 			
 			XAVApp.MainButton.onClick(() => {
-				XAVApp.MainButton.showProgress();
 				var form = document.getElementById("myForm");
 				if(form.checkValidity() == false){
 					form.reportValidity();
 					return;
 				}
-				else
+				else{
+					XAVApp.MainButton.showProgress();
 					sendDataToBot();
+				}
 			});
 			
 			function sendDataToBot() {
