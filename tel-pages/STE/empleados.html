@@ -306,8 +306,8 @@
 				for (let [key, value] of map) {
 				  <!-- console.log(key + " - " + value); -->
 				  if(key.indexOf('Fecha') > 0){
-					let fecha = value != '' ? (Date.parse(value) * 1) : 0;
-					datos += '"'+ key +'": '+ fecha + ',';
+					let fecha = value != '' ? value : '';
+					datos += '"'+ key +'": "'+ fecha + '",';
 				  }
 				  else {
 					value = value != '' ? value : 0
