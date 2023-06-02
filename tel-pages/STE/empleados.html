@@ -334,6 +334,18 @@
 				if(value < 0 || Number.isInteger(value) == false) {
 					me.value = "";
 				}
+				
+				var pnlEmpleados = document.getElementById("pnlEmpleados");
+				 $(pnlEmpleados).find('input') <!-- find('input:text, input:password, input:file, select, textarea') -->
+					.each(function() {
+						let el = $(this);
+						if(me.id != el[0].id && el[0].id.indexOf('Expediente') > 0) {
+							let _value = el[0].value * 1;
+							if (_value == value)
+								me.value = '';
+						}
+					   
+					});
 			}
 			
 			function validateRange(me) {
