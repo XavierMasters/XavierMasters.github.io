@@ -269,9 +269,10 @@
 			
 			$(document).ready(function () {
 				const params = new URLSearchParams(document.location.search);
-				alert(params);
-				<!-- if(params.size > 0) { -->
-				<!-- } -->
+				
+				if(params.size > 0) {
+					cargarEmpleados(params);
+				}
 			
 			});
 
@@ -465,6 +466,29 @@
 					
 			}
 		
+			function cargarEmpleados(params) {
+				for (const p of params) {
+					console.log(p);
+			
+					let posicion = p[0].replace(/^\D+/g, '');
+					let values = p[1].split('|');
+					let pnl = $('#pnlEmpleado' + posicion);
+					pnl.show(1000);
+					let txtExp = $('#txtExpediente' + posicion);
+					let txtFIni = $('#txtFechaIni' + posicion);
+					let txtFFin = $('#txtFechaFin' + posicion);
+					let txtHrs = $('#txtTotalHoras' + posicion);
+					txtExp.attr("required", "");
+					txtExp.val(values[0]);	
+					txtFIni.attr("required", "");
+					txtFIni.val(values[1]);
+					txtFFin.attr("required", "");
+					txtFFin.val(values[2]);
+					txtHrs.val(values[3]);
+				  
+				}
+				
+			}
 		
 	</script>
     
