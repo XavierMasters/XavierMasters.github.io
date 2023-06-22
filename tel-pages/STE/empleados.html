@@ -267,12 +267,14 @@
 			
 			XAVApp.init();
 			
-			const params = new URLSearchParams(document.location.search);
-			alert(params);
-            var d1 = params.get("d1");
-			var d2 = params.get("d2");
-			alert(d1);
-			alert(d2);
+			$(document).ready(function () {
+				const params = new URLSearchParams(document.location.search);
+				alert(params);
+				<!-- if(params.size > 0) { -->
+				<!-- } -->
+			
+			});
+
 			
 			XAVApp.MainButton.onClick(() => {
 				var form = document.getElementById("myForm");
