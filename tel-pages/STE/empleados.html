@@ -395,8 +395,10 @@
 			function validarExpediente(me) {
 			//console.log(me.id + ' ' + me.value);
 				var value = me.value * 1;
-				if(value < 0 || Number.isInteger(value) == false) {
-					me.value = "";
+				me.value = value;
+				if(value <= 0 || Number.isInteger(value) == false) {
+					me.value = '';
+					return;
 				}
 				
 				var pnlEmpleados = document.getElementById("pnlEmpleados");
