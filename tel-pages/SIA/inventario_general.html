@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="MobileOptimized" content="176" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <link rel="stylesheet" href="../../Content/bootstrap-4.3.1.min.css" />
+    <link rel="stylesheet" href="../../Content/font-awesome-4.7.0.min.css" />
+	<link rel="stylesheet" href="style.css">
+	<!-- Load the Telegram Library before any other scripts-->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="../../Content/js/jquery-3.4.1.min.js"></script>
+    <script src="../../Content/js/bootstrap-4.3.1.min.js"></script>
+</head>
+<body class="" style="visibility: hidden;">
+	<form id="myForm" method="post">
+				<div class="">
+					<div class="card card-shadow">
+						<div class="card-header header">
+							<img src="../../Content/images/logo_RNUM_45x85.png" alt="LogoRnum">
+							<h4 class="ml-2">Inventario Autmotriz</h4>
+						</div>
+						<div class="card-body">
+							<div id="formInventario" class="row">
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="limpiadores" id="chkLimpiadores" onchange="cantidadesInput('chkLimpiadores','txtLimpiadores')">
+									<span class="form-check-label mr-1">Limpiadores</span>
+								</div>
+								<input type="number" id="txtLimpiadores" placeholder="Cant." name="txtLimpiadores" class="form-control  col-3" hidden>
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="taponGasolina" id="chkTaponGasolina">
+									<span class="form-check-label mr-1">Tapon de gasolina</span>
+								</div>
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="taponesRuedas" id="chkTaponesRuedas" onchange="cantidadesInput('chkTaponesRuedas','txtTaponesRuedas')">
+									<span class="form-check-label mr-1">Tapones de ruedas</span>
+								</div>
+								<input type="number" id="txtTaponesRuedas" placeholder="Cant." name="txtTaponesRuedas" class="form-control control-hidden col-3">
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="extintor" id="chkExtintor">
+									<span class="form-check-label mr-1">Extintor</span>
+								</div>
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="espejoInterior" id="chkEspejoInterior">
+									<span class="form-check-label mr-1">Espejo interior</span>
+								</div>
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="radio" id="chkRadio">
+									<span class="form-check-label mr-1">Radio</span>
+								</div>
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="antena" id="chkAntena">
+									<span class="form-check-label mr-1">Antena</span>
+								</div>
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="seguroPalanca" id="chkSeguroPalanca">
+									<span class="form-check-label mr-1">Seguro palanca</span>
+								</div>
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="dobleTraccion" id="chkDobleTraccion">
+									<span class="form-check-label mr-1">Doble traccion</span>
+								</div>
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="aireAcondicionado" id="chkAireAcondicionado">
+									<span class="form-check-label mr-1">Aire acondicionado</span>
+								</div>
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="asientos" id="chkAsinetos" onchange="cantidadesInput('chkAsinetos','txtAsinetos')">
+									<span class="form-check-label mr-1">Asientos</span>
+								</div>
+								<input type="number" id="txtAsinetos" placeholder="Cant." name="txtAsinetos" class="form-control control-hidden col-3">
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="llantaRefaccion" id="chkLlantaRefaccion">
+									<span class="form-check-label mr-1">Llanta de refeccion</span>
+								</div>
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="espejoExterior" id="chkEspejoEsxterior" onchange="cantidadesInput('chkEspejoEsxterior','txtEspejoEsxterior')">
+									<span class="form-check-label mr-1">Espejo exterior</span>
+								</div>
+								<input type="number" id="txtEspejoEsxterior" placeholder="Cant." name="txtEspejoEsxterior" class="form-control control-hidden col-3">
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="gatoManeral" id="chkGatoManeral">
+									<span class="form-check-label mr-1">Gato y maneral</span>
+								</div>
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="cinturonSeguridad" id="chkCinturonSeguridad">
+									<span class="form-check-label mr-1">Cinturones seguridad</span>
+								</div>
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="reflejantes" id="chkReflejantes">
+									<span class="form-check-label mr-1">Reflejantes</span>
+								</div>
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="llaveRueda" id="chkLlaveRueda">
+									<span class="form-check-label mr-1">Llave de rueda</span>
+								</div>
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="cablePasacorriente" id="chkCablePasacorriente">
+									<span class="form-check-label mr-1">Cables pasacorriente</span>
+								</div>
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="rotulacionImagenCorp" id="chkRotulacionImagenCorp">
+									<span class="form-check-label mr-1">Rotulacion imagen corp</span>
+								</div>
+								<div class="col-10 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="calcomaniaContaminacion" id="chkCalcomaniaContaminacion">
+									<span class="form-check-label mr-1">Calcomania contaminacion</span>
+								</div>
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="placas" id="chkPlacas">
+									<span class="form-check-label mr-1">Placas</span>
+								</div>
+								<div class="col-9 form-check-inline">
+									<input class="form-check-input" type="checkbox" name="herramienta" id="chkHerramienta" onchange="cantidadesInput('chkHerramienta','txtHerramienta')">
+									<span class="form-check-label mr-1">Herramienta</span>
+								</div>
+								<input type="number" id="txtHerramienta" placeholder="Cant." name="txtHerramienta" class="form-control control-hidden col-3">
+							</div>
+						</div>
+						<div class="card-footer ">
+						</div>
+					</div>
+				<div class="fixed-bottom">
+					<!-- <input type="submit" value="ENVIAR DATOS" class="btn btn-primary btn-lg btn-block" onclick="sendDataToBot()"> -->
+				</div>
+			</div>
+	</form>
+	<script src="app.js"></script>
+</body>
+</html>

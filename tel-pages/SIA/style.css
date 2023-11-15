@@ -1,0 +1,34 @@
+.header{
+    align-items: center;
+    display: flex;
+    padding: 15px;
+}
+.form-control{
+    height: 30px;
+}
+.form-check-inline{
+    margin-right: 0;
+}
+.control-hidden{
+    display: none;
+}
+.form-check-input{
+    width: 1.3em;
+    height: 1.3em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #c6c3c3;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.form-check-input:checked {
+    background-color: #007BFF;
+}
+
+span{
+    font-size: 18px;
+}
