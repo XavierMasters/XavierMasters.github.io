@@ -23,16 +23,45 @@
 				<div class="">
 					<div class="card card-shadow">
 						<div class="card-header header">
-							<img src="../../Content/images/logo_RNUM_45x85.png" alt="LogoRnum">
+							<img id="imgLogo" style="height: 45PX;" alt="Logo">
 							<h4 class="ml-2">Inventario Autmotriz</h4>
 						</div>
 						<div class="card-body">
 							<div id="formInventario" class="row">
+								<div class="col-12 p-0">
+									<span class="mr-1" style="font-size: 16px;">Vehículo:</span>
+									<b><span id="txtNoEco" style="font-size: 14px;"></span></b>
+								</div>
+								<div class="col-12 p-0">
+									<span class="mr-1">Tarjeta PASE:</span>
+									<b><span id="txtTarjetaPase" class="col-7" style="font-size: 16px;"></span></b>
+								</div>
+								<div class="col-12 p-0">
+									<span class="mr-1">Asignado a:</span>
+									<b><span id="txtUsuario" class="col-7" style="font-size: 14px;" required></span></b>
+								</div>
+								
+								<div class="col-12 p-0">
+									<span class="mr-1">Fecha de asignasión:</span>
+									<input id="txtFechaAsignasion" type="date" class="form-control mr-1" required></input>
+								</div>
+								<div class="col-12 p-0 ">
+									<span class="mr-1">Estatus Operativo:</span>
+									<div class="col-12 p-0">
+										<select class="custom-select" name="cbxEstatusOperativo" id="cbxEstatusOperativo" required>
+											<option value="">--Selecciona una opción--</option>
+											<option value="1">Funciona</option>
+											<option value="2">No funciona</option>
+											<option value="3">Funciona con problemas transitorios</option>
+										</select>
+									</div>
+								</div>
+								<hr class="hr col-11" />
 								<div class="col-9 form-check-inline">
 									<input class="form-check-input" type="checkbox" name="limpiadores" id="chkLimpiadores" onchange="cantidadesInput('chkLimpiadores','txtLimpiadores')">
 									<span class="form-check-label mr-1">Limpiadores</span>
 								</div>
-								<input type="number" id="txtLimpiadores" placeholder="Cant." name="txtLimpiadores" class="form-control  col-3" hidden>
+								<input type="number" id="txtLimpiadores" placeholder="Cant." name="txtLimpiadores" class="form-control control-hidden col-3">
 								<div class="col-9 form-check-inline">
 									<input class="form-check-input" type="checkbox" name="taponGasolina" id="chkTaponGasolina">
 									<span class="form-check-label mr-1">Tapon de gasolina</span>
@@ -71,19 +100,19 @@
 									<span class="form-check-label mr-1">Aire acondicionado</span>
 								</div>
 								<div class="col-9 form-check-inline">
-									<input class="form-check-input" type="checkbox" name="asientos" id="chkAsinetos" onchange="cantidadesInput('chkAsinetos','txtAsinetos')">
+									<input class="form-check-input" type="checkbox" name="asientos" id="chkAsientos" onchange="cantidadesInput('chkAsientos','txtAsientos')">
 									<span class="form-check-label mr-1">Asientos</span>
 								</div>
-								<input type="number" id="txtAsinetos" placeholder="Cant." name="txtAsinetos" class="form-control control-hidden col-3">
+								<input type="number" id="txtAsientos" placeholder="Cant." name="txtAsientos" class="form-control control-hidden col-3">
 								<div class="col-9 form-check-inline">
 									<input class="form-check-input" type="checkbox" name="llantaRefaccion" id="chkLlantaRefaccion">
 									<span class="form-check-label mr-1">Llanta de refeccion</span>
 								</div>
 								<div class="col-9 form-check-inline">
-									<input class="form-check-input" type="checkbox" name="espejoExterior" id="chkEspejoEsxterior" onchange="cantidadesInput('chkEspejoEsxterior','txtEspejoEsxterior')">
+									<input class="form-check-input" type="checkbox" name="espejoExterior" id="chkEspejoExterior" onchange="cantidadesInput('chkEspejoExterior','txtEspejoExterior')">
 									<span class="form-check-label mr-1">Espejo exterior</span>
 								</div>
-								<input type="number" id="txtEspejoEsxterior" placeholder="Cant." name="txtEspejoEsxterior" class="form-control control-hidden col-3">
+								<input type="number" id="txtEspejoExterior" placeholder="Cant." name="txtEspejoExterior" class="form-control control-hidden col-3">
 								<div class="col-9 form-check-inline">
 									<input class="form-check-input" type="checkbox" name="gatoManeral" id="chkGatoManeral">
 									<span class="form-check-label mr-1">Gato y maneral</span>
@@ -121,6 +150,29 @@
 									<span class="form-check-label mr-1">Herramienta</span>
 								</div>
 								<input type="number" id="txtHerramienta" placeholder="Cant." name="txtHerramienta" class="form-control control-hidden col-3">
+								<hr class="hr col-11" />
+								<div class="col-12 p-0 ">
+									<span class="mr-1">Estado de vestiduras:</span>
+									<div class="col-12 p-0">
+										<select class="custom-select" name="cbxEstadoVestidura" id="cbxEstadoVestidura" required>
+											<option value="">--Selecciona una opción--</option>
+											<option value="1">Buen estado</option>
+											<option value="2">Vestidura dañada</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-12 p-0 ">
+									<span class="mr-1">Estado de la unidad:</span>
+									<div class="col-12 p-0">
+										<select class="custom-select" name="slcEstadoVehiculo" multiple id="slcEstadoVehiculo" required>
+											<option value="1">Daño en carrocería</option>
+											<option value="2">Accidentado</option>
+											<option value="3">Daño en cristales</option>
+											<option value="4">Llanta ponchada</option>
+											<option value="5">Falla mecánica</option>
+										</select>
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="card-footer ">
