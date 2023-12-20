@@ -78,6 +78,7 @@ let getJsonData = () => {
         
     data.cbxEstadoVestidura = document.getElementById("cbxEstadoVestidura").value
     data.cbxEstatusOperativo = document.getElementById("cbxEstatusOperativo").value
+    data.slcImagenCorp = document.getElementById("slcImagenCorp").value
     data.txtTarjetaPase = document.getElementById("txtTarjetaPase").textContent
     data.txtUsuario = document.getElementById("txtUsuario").textContent
     let slcEstadoVehiculo = document.getElementById("slcEstadoVehiculo")
@@ -166,6 +167,28 @@ let cargarDatos = (params) => {
                     document.getElementById(key).value = value
                     break
             }
+
+            if(key =='txtVigenciaPlacas'){
+                txt = document.getElementById('cbxVigenciaPlaca');
+                let divVigenciaPlacas = document.getElementById('divVigenciaPlacas');
+                txt.value = 1;
+                divVigenciaPlacas.style.display = 'block'; // Muestra el campo de entrada
+                divVigenciaPlacas.setAttribute('required', 'required'); // Hace que el campo de entrada sea requerido
+            }
         }
+    }
+}
+
+let cbxVigenciaPlaca_change = (e, idModificar) => {
+    console.log(e.value);
+    let elementModificar = document.getElementById(idModificar)
+    if (e.value == 1) {
+        elementModificar.style.display = 'block';
+        elementModificar.setAttribute('required', 'required'); // Hace que el campo de entrada sea requerido
+        elementModificar.removeAttribute('disabled'); // Habilita el campo de entrada
+    }else{
+        elementModificar.style.display = 'none';  // Oculta el campo de entrada
+        elementModificar.removeAttribute('required'); // Elimina el atributo requerido del campo de entrada
+        elementModificar.setAttribute('disabled', 'disabled'); // Deshabilita el campo de entrada
     }
 }
